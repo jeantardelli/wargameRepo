@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,29 +12,27 @@
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="wargame" href="modules.html" /> 
@@ -50,7 +49,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> wargame
+            <a href="index.html" class="icon icon-home"> wargame
           
 
           
@@ -73,7 +72,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -103,7 +101,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -142,7 +139,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
           <li><a href="modules.html">wargame</a> &raquo;</li>
         
@@ -172,38 +169,38 @@
 </div>
 <div class="section" id="module-wargame.abstractgameunit">
 <span id="wargame-abstractgameunit-module"></span><h2>wargame.abstractgameunit module<a class="headerlink" href="#module-wargame.abstractgameunit" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<dl class="class">
 <dt id="wargame.abstractgameunit.AbstractGameUnit">
-<em class="property">class </em><code class="sig-prename descclassname">wargame.abstractgameunit.</code><code class="sig-name descname">AbstractGameUnit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<em class="property">class </em><code class="descclassname">wargame.abstractgameunit.</code><code class="descname">AbstractGameUnit</code><span class="sig-paren">(</span><em>name=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/abstractgameunit.html#AbstractGameUnit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
 <p>An abstract base class for creating various game characters</p>
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.abstractgameunit.AbstractGameUnit.attack">
-<code class="sig-name descname">attack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">enemy</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.attack" title="Permalink to this definition">¶</a></dt>
+<code class="descname">attack</code><span class="sig-paren">(</span><em>enemy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/abstractgameunit.html#AbstractGameUnit.attack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.attack" title="Permalink to this definition">¶</a></dt>
 <dd><p>The main logic to determine injured unit and amount of injury</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.abstractgameunit.AbstractGameUnit.heal">
-<code class="sig-name descname">heal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">heal_by</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">full_healing</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.heal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">heal</code><span class="sig-paren">(</span><em>heal_by=2</em>, <em>full_healing=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/abstractgameunit.html#AbstractGameUnit.heal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.heal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Heal the unit replenishing all the hit points</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.abstractgameunit.AbstractGameUnit.info">
-<em class="property">abstract </em><code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.info" title="Permalink to this definition">¶</a></dt>
+<code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/abstractgameunit.html#AbstractGameUnit.info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Information on the unit (MUST be overridden in subclasses)</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.abstractgameunit.AbstractGameUnit.reset_health_meter">
-<code class="sig-name descname">reset_health_meter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.reset_health_meter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reset_health_meter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/abstractgameunit.html#AbstractGameUnit.reset_health_meter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.reset_health_meter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the <cite>health_meter</cite> (assing default hit points)</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.abstractgameunit.AbstractGameUnit.show_health">
-<code class="sig-name descname">show_health</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bold</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">'\n'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.show_health" title="Permalink to this definition">¶</a></dt>
+<code class="descname">show_health</code><span class="sig-paren">(</span><em>bold=False</em>, <em>end='\n'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/abstractgameunit.html#AbstractGameUnit.show_health"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.abstractgameunit.AbstractGameUnit.show_health" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show the remaining hit points of the player and the enemy</p>
 </dd></dl>
 
@@ -212,28 +209,28 @@
 </div>
 <div class="section" id="module-wargame.attackoftheorcs">
 <span id="wargame-attackoftheorcs-module"></span><h2>wargame.attackoftheorcs module<a class="headerlink" href="#module-wargame.attackoftheorcs" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<dl class="class">
 <dt id="wargame.attackoftheorcs.AttackOfTheOrcs">
-<em class="property">class </em><code class="sig-prename descclassname">wargame.attackoftheorcs.</code><code class="sig-name descname">AttackOfTheOrcs</code><a class="headerlink" href="#wargame.attackoftheorcs.AttackOfTheOrcs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">wargame.attackoftheorcs.</code><code class="descname">AttackOfTheOrcs</code><a class="reference internal" href="_modules/wargame/attackoftheorcs.html#AttackOfTheOrcs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.attackoftheorcs.AttackOfTheOrcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Main class to play Attack of The Orcs game</p>
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.attackoftheorcs.AttackOfTheOrcs.get_occupants">
-<code class="sig-name descname">get_occupants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wargame.attackoftheorcs.AttackOfTheOrcs.get_occupants" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_occupants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/attackoftheorcs.html#AttackOfTheOrcs.get_occupants"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.attackoftheorcs.AttackOfTheOrcs.get_occupants" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of occupant types for all huts.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.attackoftheorcs.AttackOfTheOrcs.play">
-<code class="sig-name descname">play</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wargame.attackoftheorcs.AttackOfTheOrcs.play" title="Permalink to this definition">¶</a></dt>
+<code class="descname">play</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/attackoftheorcs.html#AttackOfTheOrcs.play"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.attackoftheorcs.AttackOfTheOrcs.play" title="Permalink to this definition">¶</a></dt>
 <dd><p>Workhorse method to play the game.</p>
 <p>Controls the high level logic to play the game. this is called from
 the main program to begin the game execution.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.attackoftheorcs.AttackOfTheOrcs.show_game_mission">
-<code class="sig-name descname">show_game_mission</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wargame.attackoftheorcs.AttackOfTheOrcs.show_game_mission" title="Permalink to this definition">¶</a></dt>
+<code class="descname">show_game_mission</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/attackoftheorcs.html#AttackOfTheOrcs.show_game_mission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.attackoftheorcs.AttackOfTheOrcs.show_game_mission" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the game mission in the console</p>
 </dd></dl>
 
@@ -242,45 +239,45 @@ the main program to begin the game execution.</p>
 </div>
 <div class="section" id="module-wargame.gameuniterror">
 <span id="wargame-gameuniterror-module"></span><h2>wargame.gameuniterror module<a class="headerlink" href="#module-wargame.gameuniterror" title="Permalink to this headline">¶</a></h2>
-<dl class="py exception">
+<dl class="exception">
 <dt id="wargame.gameuniterror.GameUnitError">
-<em class="property">exception </em><code class="sig-prename descclassname">wargame.gameuniterror.</code><code class="sig-name descname">GameUnitError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">code</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.gameuniterror.GameUnitError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<em class="property">exception </em><code class="descclassname">wargame.gameuniterror.</code><code class="descname">GameUnitError</code><span class="sig-paren">(</span><em>message=''</em>, <em>code=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/gameuniterror.html#GameUnitError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.gameuniterror.GameUnitError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Custom exceptions class for the <cite>AbstractGameUnit</cite> and its subclasses</p>
 </dd></dl>
 
 </div>
 <div class="section" id="module-wargame.gameutils">
 <span id="wargame-gameutils-module"></span><h2>wargame.gameutils module<a class="headerlink" href="#module-wargame.gameutils" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
+<dl class="function">
 <dt id="wargame.gameutils.print_bold">
-<code class="sig-prename descclassname">wargame.gameutils.</code><code class="sig-name descname">print_bold</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">'\n'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.gameutils.print_bold" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">wargame.gameutils.</code><code class="descname">print_bold</code><span class="sig-paren">(</span><em>msg</em>, <em>end='\n'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/gameutils.html#print_bold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.gameutils.print_bold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print a desired messsage in bold</p>
 </dd></dl>
 
-<dl class="py function">
+<dl class="function">
 <dt id="wargame.gameutils.weighted_random_selection">
-<code class="sig-prename descclassname">wargame.gameutils.</code><code class="sig-name descname">weighted_random_selection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj1</span></em>, <em class="sig-param"><span class="n">obj2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.gameutils.weighted_random_selection" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">wargame.gameutils.</code><code class="descname">weighted_random_selection</code><span class="sig-paren">(</span><em>obj1</em>, <em>obj2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/gameutils.html#weighted_random_selection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.gameutils.weighted_random_selection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Randomly select between two objects based on assigned ‘weight’</p>
 </dd></dl>
 
 </div>
 <div class="section" id="module-wargame.hut">
 <span id="wargame-hut-module"></span><h2>wargame.hut module<a class="headerlink" href="#module-wargame.hut" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<dl class="class">
 <dt id="wargame.hut.Hut">
-<em class="property">class </em><code class="sig-prename descclassname">wargame.hut.</code><code class="sig-name descname">Hut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">number</span></em>, <em class="sig-param"><span class="n">occupant</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.hut.Hut" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">wargame.hut.</code><code class="descname">Hut</code><span class="sig-paren">(</span><em>number</em>, <em>occupant</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/hut.html#Hut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.hut.Hut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to create hut object(s) in the game Attack of the Orcs</p>
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.hut.Hut.acquired">
-<code class="sig-name descname">acquired</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_occupant</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.hut.Hut.acquired" title="Permalink to this definition">¶</a></dt>
+<code class="descname">acquired</code><span class="sig-paren">(</span><em>new_occupant</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/hut.html#Hut.acquired"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.hut.Hut.acquired" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the occupant of this hut</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.hut.Hut.get_occupant_type">
-<code class="sig-name descname">get_occupant_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wargame.hut.Hut.get_occupant_type" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_occupant_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/hut.html#Hut.get_occupant_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.hut.Hut.get_occupant_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a string giving info on the hut occupant</p>
 </dd></dl>
 
@@ -289,29 +286,29 @@ the main program to begin the game execution.</p>
 </div>
 <div class="section" id="module-wargame.knight">
 <span id="wargame-knight-module"></span><h2>wargame.knight module<a class="headerlink" href="#module-wargame.knight" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<dl class="class">
 <dt id="wargame.knight.Knight">
-<em class="property">class </em><code class="sig-prename descclassname">wargame.knight.</code><code class="sig-name descname">Knight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">'Sir Foo'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.knight.Knight" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">wargame.knight.</code><code class="descname">Knight</code><span class="sig-paren">(</span><em>name='Sir Foo'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/knight.html#Knight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.knight.Knight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abstractgameunit.AbstractGameUnit</span></code></p>
 <p>Class that represents the game character ‘Knight’</p>
 <p>The player instance in the game is aKnight instance. Other Knight
 instances are considered as ‘friends’ of the player and is indicated
 by the attribute <cite>self.unit_type</cite>.</p>
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.knight.Knight.acquire_hut">
-<code class="sig-name descname">acquire_hut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hut</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.knight.Knight.acquire_hut" title="Permalink to this definition">¶</a></dt>
+<code class="descname">acquire_hut</code><span class="sig-paren">(</span><em>hut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/knight.html#Knight.acquire_hut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.knight.Knight.acquire_hut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fight the combat (command line) to acquire the hut</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.knight.Knight.info">
-<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wargame.knight.Knight.info" title="Permalink to this definition">¶</a></dt>
+<code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/knight.html#Knight.info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.knight.Knight.info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print basic information about this character</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.knight.Knight.run_away">
-<code class="sig-name descname">run_away</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wargame.knight.Knight.run_away" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run_away</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/knight.html#Knight.run_away"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.knight.Knight.run_away" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abandon the battle</p>
 </dd></dl>
 
@@ -320,14 +317,14 @@ by the attribute <cite>self.unit_type</cite>.</p>
 </div>
 <div class="section" id="module-wargame.orcrider">
 <span id="wargame-orcrider-module"></span><h2>wargame.orcrider module<a class="headerlink" href="#module-wargame.orcrider" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<dl class="class">
 <dt id="wargame.orcrider.OrcRider">
-<em class="property">class </em><code class="sig-prename descclassname">wargame.orcrider.</code><code class="sig-name descname">OrcRider</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wargame.orcrider.OrcRider" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">wargame.orcrider.</code><code class="descname">OrcRider</code><span class="sig-paren">(</span><em>name=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/orcrider.html#OrcRider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.orcrider.OrcRider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abstractgameunit.AbstractGameUnit</span></code></p>
 <p>Class that represents the game character Orc Rider</p>
-<dl class="py method">
+<dl class="method">
 <dt id="wargame.orcrider.OrcRider.info">
-<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wargame.orcrider.OrcRider.info" title="Permalink to this definition">¶</a></dt>
+<code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wargame/orcrider.html#OrcRider.info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wargame.orcrider.OrcRider.info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print basic information about this character</p>
 </dd></dl>
 
@@ -357,19 +354,11 @@ by the attribute <cite>self.unit_type</cite>.</p>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, jeantardelli
+        &copy; Copyright 2020, Jean Tardelli
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -380,6 +369,7 @@ by the attribute <cite>self.unit_type</cite>.</p>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
