@@ -1,3 +1,15 @@
+"""wargame.knight
+
+This modue is compatible with Python 3.5.x and later. It contains supporting
+code for the book, Learning Python Application Development Packt Publishing.
+
+This is my version of the code, it is pretty much similar to the original
+author version.
+
+:copyright: 2020, Jean Tardelli
+:license: The MIT License (MIT). See LICENSE file for further details.
+"""
+
 from abstractgameunit import AbstractGameUnit
 from gameutils import print_bold
 
@@ -46,7 +58,7 @@ class Knight(AbstractGameUnit):
             while continue_attack:
                 try:
                     continue_attack = input(".......continue attack? (y/n): ")
-                    assert continue_attack == 'y' or continue_attack == 'n'
+                    assert continue_attack in ('y', 'n')
                 except AssertionError:
                     print("Please, select either 'y' for attack or 'n' to run away")
                     continue
@@ -75,7 +87,7 @@ class Knight(AbstractGameUnit):
     def run_away(self):
         """Abandon the combat and run away from the hut
 
-        If the player is losing the combat, there is an option to leave the 
+        If the player is losing the combat, there is an option to leave the
         hut. A strategy to rejuvenate and restart the combat for a better
         change of winning.
 

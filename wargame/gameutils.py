@@ -1,3 +1,17 @@
+"""wargame.gameutils
+
+This module contains some utility function for the game Attack of the Orcs
+
+This modue is compatible with Python 3.5.x and later. It contains supporting
+code for the book, Learning Python Application Development Packt Publishing.
+
+This is my version of the code, it is pretty much similar to the original
+author version.
+
+:copyright: 2020, Jean Tardelli
+:license: The MIT License (MIT). See LICENSE file for further details.
+"""
+
 import random
 
 def weighted_random_selection(obj1, obj2):
@@ -11,7 +25,7 @@ def weighted_random_selection(obj1, obj2):
     :return: obj1 or obj2
 
     .. seealso:: :py:func:`weighted_random_selection_alternate` which is an
-                  alternative implementation that is used to demonstrate 
+                  alternative implementation that is used to demonstrate
                   the importance of unit testing.
     """
     selection = random.choices([id(obj1), id(obj2)], weights=[0.3, 0.7])
@@ -29,4 +43,3 @@ def print_bold(msg, end='\n'):
     :arg end: Tell how the printed string should end (newline, space etc)
     """
     print("\033[1m" + msg + "\033[0m", end=end)
-

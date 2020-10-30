@@ -1,3 +1,17 @@
+"""wargame.abstractgameunit
+
+This module contains the AbstractGameUnit class implementation.
+
+This modue is compatible with Python 3.5.x and later. It contains supporting
+code for the book, Learning Python Application Development Packt Publishing.
+
+This is my version of the code, it is pretty much similar to the original
+author version.
+
+:copyright: 2020, Jean Tardelli
+:license: The MIT License (MIT). See LICENSE file for further details.
+"""
+
 import random
 from abc import ABC, abstractmethod
 from gameuniterror import GameUnitError
@@ -30,13 +44,12 @@ class AbstractGameUnit(ABC):
 
         Abstract method. See subclasses for implementation.
         """
-        pass
 
     def attack(self, enemy):
         """The main logic to 'attack' the enemy unit.
 
         This method handles combat between the player (Knight instance) and the
-        given enemy (at the moment OrcRider instance). In the combat, one of the 
+        given enemy (at the moment OrcRider instance). In the combat, one of the
         units could get injured or both will scape unhurt. The method reduces the
         'health' oh the injured unit by a randomly selected amount.
 
@@ -53,7 +66,7 @@ class AbstractGameUnit(ABC):
             print("ATTACK! ", end='')
             self.show_health(end='  ')
             enemy.show_health(end='  ')
- 
+
     def heal(self, heal_by=2, full_healing=True):
         """Heal the unit replenishing all the hit points
 
@@ -73,10 +86,10 @@ class AbstractGameUnit(ABC):
             self.health_meter = self.max_hp
         else:
             self.health_meter += heal_by
- 
+
         if self.health_meter > self.max_hp:
-            raise GameUnitErrors("health_meter > max_hp!")
- 
+            raise GameUnitError("health_meter > max_hp!")
+
         print_bold("You are HEALED!", end=' ')
         self.show_health(bold=True)
 
@@ -97,9 +110,8 @@ class AbstractGameUnit(ABC):
 
        """
         msg = "Health: {0:s} {1:d}".format(self.name, self.health_meter)
- 
+
         if bold:
             print_bold(msg, end=end)
         else:
             print(msg, end=end)
-

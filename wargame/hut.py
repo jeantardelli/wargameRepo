@@ -1,6 +1,20 @@
+"""wargame.hut
+
+This module contains the Hut class implementation.
+
+This modue is compatible with Python 3.5.x and later. It contains supporting
+code for the book, Learning Python Application Development Packt Publishing.
+
+This is my version of the code, it is pretty much similar to the original
+author version.
+
+:copyright: 2020, Jean Tardelli
+:license: The MIT License (MIT). See LICENSE file for further details.
+"""
+
 from gameutils import print_bold
 
-class Hut(object):
+class Hut():
     """Class to create hut object(s) in the game Attack of the Orcs
 
     :arg int number: Hut number to be assigned
@@ -8,7 +22,7 @@ class Hut(object):
 
     :ivar int number: A number assigned to this hut
     :ivar AbstractGameUnit occupant: The occupant of this hut.
-                  Needs to be an instance of the subclass of 
+                  Needs to be an instance of the subclass of
                   `AbstractGameUnit`.
     :ivar boolean is_acquired: A boolean flag to indicate if the
                   hut is acquired. In the current implementation
@@ -35,7 +49,7 @@ class Hut(object):
                   context). A generalization is to allow anyone to 'acquire'
                   the hut! In that case, the client code should properly
                   interpret meaning of `is_acquired` flag!
-                  Otherwise it will be a bug! As an exercise, write a unit 
+                  Otherwise it will be a bug! As an exercise, write a unit
                   test to catch this and/or make the calling code robust.
         """
         self.occupant = new_occupant
@@ -47,7 +61,7 @@ class Hut(object):
 
         Used only for the printing information on who is present in the
         hut. The information it will return depends on the occupant and
-        can be one of these strings: 'enemy', 'friend', 'ACQUIRED', 
+        can be one of these strings: 'enemy', 'friend', 'ACQUIRED',
         'unoccupied'
 
         The logic is as follows: If the hut.occupant is one of the game
@@ -66,4 +80,3 @@ class Hut(object):
             occupant_type = self.occupant.unit_type
 
         return occupant_type
-

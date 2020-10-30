@@ -1,10 +1,24 @@
+"""wargame.attackoftheorcs
+
+This module contains the AttackOfTheOrcs class implementation.
+
+This modue is compatible with Python 3.5.x and later. It contains supporting
+code for the book, Learning Python Application Development Packt Publishing.
+
+This is my version of the code, it is pretty much similar to the original
+author version.
+
+:copyright: 2020, Jean Tardelli
+:license: The MIT License (MIT). See LICENSE file for further details.
+"""
+
 import random
 from hut import Hut
 from knight import Knight
 from orcrider import OrcRider
 from gameutils import print_bold
 
-class AttackOfTheOrcs(object):
+class AttackOfTheOrcs():
     """Main class with the high level logic to play Attack of The Orcs  game
 
     :ivar huts: List object to hold instances of `Hut` class.
@@ -65,19 +79,19 @@ class AttackOfTheOrcs(object):
                 idx = int(user_choice)
                 assert idx >  0
 
-            except ValueError as e:
-                print("Invalid input, args: {0:s}".format(', '.join(e.args)))
+            except ValueError as err:
+                print("Invalid input, args: {0:s}".format(', '.join(err.args)))
                 continue
-            except AssertionError as e:
+            except AssertionError as err:
                 print("Number should be in the range 1-5. Try again")
- 
+
             try:
                 if self.huts[idx-1].is_acquired:
                     print("You have already acquired this hut. Try another one.\n"
                           "<INFO: You can NOT get healed in already acquired hut.>")
                 else:
                     verifying_choice = False
-            except IndexError as e:
+            except IndexError as err:
                 print("Number should be in the range 1-5. Try again")
         return idx
 
