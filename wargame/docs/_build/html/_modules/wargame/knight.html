@@ -144,16 +144,35 @@
            <div itemprop="articleBody">
             
   <h1>Source code for wargame.knight</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">abstractgameunit</span> <span class="kn">import</span> <span class="n">AbstractGameUnit</span>
+<span></span><span class="sd">&quot;&quot;&quot;wargame.knight</span>
+
+<span class="sd">This modue is compatible with Python 3.5.x and later. It contains supporting</span>
+<span class="sd">code for the book, Learning Python Application Development Packt Publishing.</span>
+
+<span class="sd">This is my version of the code, it is pretty much similar to the original</span>
+<span class="sd">author version.</span>
+
+<span class="sd">:copyright: 2020, Jean Tardelli</span>
+<span class="sd">:license: The MIT License (MIT). See LICENSE file for further details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">abstractgameunit</span> <span class="kn">import</span> <span class="n">AbstractGameUnit</span>
 <span class="kn">from</span> <span class="nn">gameutils</span> <span class="kn">import</span> <span class="n">print_bold</span>
 
 <div class="viewcode-block" id="Knight"><a class="viewcode-back" href="../../wargame.html#wargame.knight.Knight">[docs]</a><span class="k">class</span> <span class="nc">Knight</span><span class="p">(</span><span class="n">AbstractGameUnit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class that represents the game character &#39;Knight&#39;</span>
 
-<span class="sd">    The player instance in the game is aKnight instance. Other Knight</span>
+<span class="sd">    The player instance in the game is a Knight instance. Other Knight</span>
 <span class="sd">    instances are considered as &#39;friends&#39; of the player and is indicated</span>
 <span class="sd">    by the attribute `self.unit_type`.</span>
+
+<span class="sd">    :arg str name: Name of this game character (optional)</span>
+
+<span class="sd">    :ivar int max_hp: Maximum number of hit points (health points)</span>
+<span class="sd">    :ivar int health_meter: The actual number of hit points or health points</span>
+<span class="sd">    :ivar str unit_type: Stores id this character (unit) a friend or an enemy</span>
+<span class="sd">    :ivar AbstractGameUnit enemy: Stores who is the enemy (not implemented)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Sir Foo&#39;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
@@ -162,11 +181,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">unit_type</span> <span class="o">=</span> <span class="s1">&#39;friend&#39;</span>
 
 <div class="viewcode-block" id="Knight.info"><a class="viewcode-back" href="../../wargame.html#wargame.knight.Knight.info">[docs]</a>    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Print basic information about this character&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Print basic information about this character</span>
+
+<span class="sd">        Overrides AbstractGameUnit.info</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am a Knight!&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Knight.acquire_hut"><a class="viewcode-back" href="../../wargame.html#wargame.knight.Knight.acquire_hut">[docs]</a>    <span class="k">def</span> <span class="nf">acquire_hut</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hut</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fight the combat (command line) to acquire the hut&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Fight the combat (command line) to acquire the hut</span>
+
+<span class="sd">        :arg Hut hut: The hut that needs to be acquired.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">print_bold</span><span class="p">(</span><span class="s2">&quot;Entering hut </span><span class="si">{0:d}</span><span class="s2">...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hut</span><span class="o">.</span><span class="n">number</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
         <span class="n">is_enemy</span> <span class="o">=</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">hut</span><span class="o">.</span><span class="n">occupant</span><span class="p">,</span> <span class="n">AbstractGameUnit</span><span class="p">)</span> <span class="ow">and</span>
                     <span class="n">hut</span><span class="o">.</span><span class="n">occupant</span><span class="o">.</span><span class="n">unit_type</span> <span class="o">==</span> <span class="s1">&#39;enemy&#39;</span><span class="p">)</span>
@@ -179,7 +204,7 @@
             <span class="k">while</span> <span class="n">continue_attack</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">continue_attack</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;.......continue attack? (y/n): &quot;</span><span class="p">)</span>
-                    <span class="k">assert</span> <span class="n">continue_attack</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span> <span class="ow">or</span> <span class="n">continue_attack</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span>
+                    <span class="k">assert</span> <span class="n">continue_attack</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please, select either &#39;y&#39; for attack or &#39;n&#39; to run away&quot;</span><span class="p">)</span>
                     <span class="k">continue</span>
@@ -206,7 +231,14 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">heal</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Knight.run_away"><a class="viewcode-back" href="../../wargame.html#wargame.knight.Knight.run_away">[docs]</a>    <span class="k">def</span> <span class="nf">run_away</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Abandon the battle&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Abandon the combat and run away from the hut</span>
+
+<span class="sd">        If the player is losing the combat, there is an option to leave the</span>
+<span class="sd">        hut. A strategy to rejuvenate and restart the combat for a better</span>
+<span class="sd">        change of winning.</span>
+
+<span class="sd">        .. seealso:: :py:meth:`self.acquire_hut`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">print_bold</span><span class="p">(</span><span class="s2">&quot;RUNNING AWAY...&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">enemy</span> <span class="o">=</span> <span class="kc">None</span></div></div>
 </pre></div>

@@ -144,21 +144,58 @@
            <div itemprop="articleBody">
             
   <h1>Source code for wargame.attackoftheorcs</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">random</span>
+<span></span><span class="sd">&quot;&quot;&quot;wargame.attackoftheorcs</span>
+
+<span class="sd">This module contains the AttackOfTheOrcs class implementation.</span>
+
+<span class="sd">This modue is compatible with Python 3.5.x and later. It contains supporting</span>
+<span class="sd">code for the book, Learning Python Application Development Packt Publishing.</span>
+
+<span class="sd">This is my version of the code, it is pretty much similar to the original</span>
+<span class="sd">author version.</span>
+
+<span class="sd">:copyright: 2020, Jean Tardelli</span>
+<span class="sd">:license: The MIT License (MIT). See LICENSE file for further details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">hut</span> <span class="kn">import</span> <span class="n">Hut</span>
 <span class="kn">from</span> <span class="nn">knight</span> <span class="kn">import</span> <span class="n">Knight</span>
 <span class="kn">from</span> <span class="nn">orcrider</span> <span class="kn">import</span> <span class="n">OrcRider</span>
 <span class="kn">from</span> <span class="nn">gameutils</span> <span class="kn">import</span> <span class="n">print_bold</span>
 
+<div class="viewcode-block" id="AttackOfTheOrcs"><a class="viewcode-back" href="../../wargame.html#wargame.attackoftheorcs.AttackOfTheOrcs">[docs]</a><span class="k">class</span> <span class="nc">AttackOfTheOrcs</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Main class with the high level logic to play Attack of The Orcs  game</span>
 
-<div class="viewcode-block" id="AttackOfTheOrcs"><a class="viewcode-back" href="../../wargame.html#wargame.attackoftheorcs.AttackOfTheOrcs">[docs]</a><span class="k">class</span> <span class="nc">AttackOfTheOrcs</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Main class to play Attack of The Orcs game&quot;&quot;&quot;</span>
+<span class="sd">    :ivar huts: List object to hold instances of `Hut` class.</span>
+<span class="sd">    :ivar player: Represents the player playing this game. This is an instance</span>
+<span class="sd">                  of class `Knight` in current implementation.</span>
+
+<span class="sd">    .. seealso:: :py:meth:`self.play` where the main action happens.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">huts</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="AttackOfTheOrcs.get_occupants"><a class="viewcode-back" href="../../wargame.html#wargame.attackoftheorcs.AttackOfTheOrcs.get_occupants">[docs]</a>    <span class="k">def</span> <span class="nf">get_occupants</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of occupant types for all huts.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Return a list of occupant types for all huts.</span>
+
+<span class="sd">        This is mainly used for printing information on current status of the</span>
+<span class="sd">        hut (wheter unoccupied or acquired).</span>
+
+<span class="sd">        If the occupant is not `None` the occupant type will be &#39;enemy&#39; or</span>
+<span class="sd">        &#39;friend&#39;. But if there is no occupant or is already &#39;ACQUIRED&#39; the</span>
+<span class="sd">        occupant_type will display that information instead.</span>
+<span class="sd">        See `Hut.get_occupant_type()` for more details.</span>
+
+<span class="sd">        Return a list that collects this information from all the huts.</span>
+<span class="sd">        This is a list comprehension example. More on the list comprehension</span>
+<span class="sd">        in a chapter on Performance.</span>
+
+<span class="sd">        :return: A list containing occupant types (string)</span>
+
+<span class="sd">        .. seealso: :py:meth:`Hut.get_occupant_type`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">get_occupant_type</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">huts</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="AttackOfTheOrcs.show_game_mission"><a class="viewcode-back" href="../../wargame.html#wargame.attackoftheorcs.AttackOfTheOrcs.show_game_mission">[docs]</a>    <span class="k">def</span> <span class="nf">show_game_mission</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -169,36 +206,48 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------------------------------------</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_process_user_choice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Process the user input for choice of hut to enter&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Process the user input for choice of hut to enter</span>
+
+<span class="sd">        Returns the hut number to enter based on the user input. This method</span>
+<span class="sd">        makes sure that the hut number user has entered is valid. If not, it</span>
+<span class="sd">        prompts the user to re-enter this information.</span>
+
+<span class="sd">        :return: hut index to enter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">verifying_choice</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current occupants: </span><span class="si">{0:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_occupants</span><span class="p">())))</span>
         <span class="k">while</span> <span class="n">verifying_choice</span><span class="p">:</span>
             <span class="n">user_choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Choose a hut number to enter (1-5): &quot;</span><span class="p">)</span>
-            
+
             <span class="c1"># Handling Exceptions block</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_choice</span><span class="p">)</span>
                 <span class="k">assert</span> <span class="n">idx</span> <span class="o">&gt;</span>  <span class="mi">0</span>
 
-            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid input, args: </span><span class="si">{0:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">)))</span>
+            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid input, args: </span><span class="si">{0:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">args</span><span class="p">)))</span>
                 <span class="k">continue</span>
-            <span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number should be in the range 1-5. Try again&quot;</span><span class="p">)</span>
-                
+
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">huts</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">is_acquired</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You have already acquired this hut. Try another one.</span><span class="se">\n</span><span class="s2">&quot;</span>
                           <span class="s2">&quot;&lt;INFO: You can NOT get healed in already acquired hut.&gt;&quot;</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">verifying_choice</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number should be in the range 1-5. Try again&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">idx</span>
 
     <span class="k">def</span> <span class="nf">_occupy_huts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Randomly occupy the huts with one of the options (friend, enemy or &#39;None&#39;)&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Randomly occupy the huts with one of the options (friend, enemy or &#39;None&#39;)</span>
+
+<span class="sd">        .. todo::</span>
+<span class="sd">            Here we assume there are exactly 5 huts. As an exercise, make it a user</span>
+<span class="sd">            input. Note that after such change, the unit test is expected to fail!</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">choice_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="s1">&#39;enemy&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
             <span class="n">computer_choice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">choice_lst</span><span class="p">)</span>
@@ -217,6 +266,16 @@
 
 <span class="sd">        Controls the high level logic to play the game. this is called from</span>
 <span class="sd">        the main program to begin the game execution.</span>
+
+<span class="sd">        In summary, this method has the high level logic that does the following</span>
+<span class="sd">        by calling appropriate functionality:</span>
+
+<span class="sd">        * Set up instance variables for the game</span>
+<span class="sd">        * Accept the user input for hut number to enter</span>
+<span class="sd">        * Attempt to acquire the hut (:py:meth:`Knight.acquire_hut`)</span>
+<span class="sd">        * Determine if the player wins or loses.</span>
+
+<span class="sd">        .. seealso:: :py:meth:`Knight.acquire_hut`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">Knight</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_occupy_huts</span><span class="p">()</span>

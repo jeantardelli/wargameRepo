@@ -144,23 +144,80 @@
            <div itemprop="articleBody">
             
   <h1>Source code for wargame.hut</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">gameutils</span> <span class="kn">import</span> <span class="n">print_bold</span>
+<span></span><span class="sd">&quot;&quot;&quot;wargame.hut</span>
 
-<div class="viewcode-block" id="Hut"><a class="viewcode-back" href="../../wargame.html#wargame.hut.Hut">[docs]</a><span class="k">class</span> <span class="nc">Hut</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class to create hut object(s) in the game Attack of the Orcs&quot;&quot;&quot;</span>
+<span class="sd">This module contains the Hut class implementation.</span>
+
+<span class="sd">This modue is compatible with Python 3.5.x and later. It contains supporting</span>
+<span class="sd">code for the book, Learning Python Application Development Packt Publishing.</span>
+
+<span class="sd">This is my version of the code, it is pretty much similar to the original</span>
+<span class="sd">author version.</span>
+
+<span class="sd">:copyright: 2020, Jean Tardelli</span>
+<span class="sd">:license: The MIT License (MIT). See LICENSE file for further details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">gameutils</span> <span class="kn">import</span> <span class="n">print_bold</span>
+
+<div class="viewcode-block" id="Hut"><a class="viewcode-back" href="../../wargame.html#wargame.hut.Hut">[docs]</a><span class="k">class</span> <span class="nc">Hut</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Class to create hut object(s) in the game Attack of the Orcs</span>
+
+<span class="sd">    :arg int number: Hut number to be assigned</span>
+<span class="sd">    :arg AbstractGameUnit occupant: The new occupant of the Hut</span>
+
+<span class="sd">    :ivar int number: A number assigned to this hut</span>
+<span class="sd">    :ivar AbstractGameUnit occupant: The occupant of this hut.</span>
+<span class="sd">                  Needs to be an instance of the subclass of</span>
+<span class="sd">                  `AbstractGameUnit`.</span>
+<span class="sd">    :ivar boolean is_acquired: A boolean flag to indicate if the</span>
+<span class="sd">                  hut is acquired. In the current implementation</span>
+<span class="sd">                  this is viewed from the player&#39;s perspective.</span>
+
+<span class="sd">    .. seealso:: where it is used --</span>
+<span class="sd">            :py:meth: `attackoftheorcs.AttackOfTheOrcs.setup_game_scenario`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">occupant</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">occupant</span> <span class="o">=</span> <span class="n">occupant</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">is_acquired</span> <span class="o">=</span> <span class="kc">False</span>
 
 <div class="viewcode-block" id="Hut.acquired"><a class="viewcode-back" href="../../wargame.html#wargame.hut.Hut.acquired">[docs]</a>    <span class="k">def</span> <span class="nf">acquired</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_occupant</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the occupant of this hut&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Update the occupant of this hut and set is_acquired flag.</span>
+
+<span class="sd">        Update the occupant instance variable with the parameter new_occupant</span>
+<span class="sd">        and set the is_acquired flag to True.</span>
+
+<span class="sd">        :arg new_occupant: self.occupant will be updated with this parameter</span>
+
+<span class="sd">        .. todo:: In the current implementation this is supposed to be called</span>
+<span class="sd">                  only bt the `Knight` instance (everything from the player</span>
+<span class="sd">                  context). A generalization is to allow anyone to &#39;acquire&#39;</span>
+<span class="sd">                  the hut! In that case, the client code should properly</span>
+<span class="sd">                  interpret meaning of `is_acquired` flag!</span>
+<span class="sd">                  Otherwise it will be a bug! As an exercise, write a unit</span>
+<span class="sd">                  test to catch this and/or make the calling code robust.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">occupant</span> <span class="o">=</span> <span class="n">new_occupant</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">is_acquired</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">print_bold</span><span class="p">(</span><span class="s2">&quot;GOOD JOB! Hut </span><span class="si">{0:d}</span><span class="s2"> acquired&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Hut.get_occupant_type"><a class="viewcode-back" href="../../wargame.html#wargame.hut.Hut.get_occupant_type">[docs]</a>    <span class="k">def</span> <span class="nf">get_occupant_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a string giving info on the hut occupant&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Return a string giving info on the hut occupant type.</span>
+
+<span class="sd">        Used only for the printing information on who is present in the</span>
+<span class="sd">        hut. The information it will return depends on the occupant and</span>
+<span class="sd">        can be one of these strings: &#39;enemy&#39;, &#39;friend&#39;, &#39;ACQUIRED&#39;,</span>
+<span class="sd">        &#39;unoccupied&#39;</span>
+
+<span class="sd">        The logic is as follows: If the hut.occupant is one of the game</span>
+<span class="sd">        characters, it will simply retrieve this info from that instance.</span>
+<span class="sd">        Otherwise determine whether it is acquired or unoccupied.</span>
+
+<span class="sd">        :return: A string representing the occupant type</span>
+
+<span class="sd">        .. seealso: :py:meth: `attackoftheorcs.AttackOfTheOrcs.get_occupants`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_acquired</span><span class="p">:</span>
             <span class="n">occupant_type</span> <span class="o">=</span> <span class="s1">&#39;ACQUIRED&#39;</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">occupant</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -169,7 +226,6 @@
             <span class="n">occupant_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">occupant</span><span class="o">.</span><span class="n">unit_type</span>
 
         <span class="k">return</span> <span class="n">occupant_type</span></div></div>
-
 </pre></div>
 
            </div>

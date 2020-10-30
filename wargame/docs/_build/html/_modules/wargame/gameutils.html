@@ -144,19 +144,51 @@
            <div itemprop="articleBody">
             
   <h1>Source code for wargame.gameutils</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">random</span>
+<span></span><span class="sd">&quot;&quot;&quot;wargame.gameutils</span>
+
+<span class="sd">This module contains some utility function for the game Attack of the Orcs</span>
+
+<span class="sd">This modue is compatible with Python 3.5.x and later. It contains supporting</span>
+<span class="sd">code for the book, Learning Python Application Development Packt Publishing.</span>
+
+<span class="sd">This is my version of the code, it is pretty much similar to the original</span>
+<span class="sd">author version.</span>
+
+<span class="sd">:copyright: 2020, Jean Tardelli</span>
+<span class="sd">:license: The MIT License (MIT). See LICENSE file for further details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
 
 <div class="viewcode-block" id="weighted_random_selection"><a class="viewcode-back" href="../../wargame.html#wargame.gameutils.weighted_random_selection">[docs]</a><span class="k">def</span> <span class="nf">weighted_random_selection</span><span class="p">(</span><span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Randomly select between two objects based on assigned &#39;weight&#39;&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Randomly return one of the following, obj1 or obj2</span>
+
+<span class="sd">    :arg obj1: An instance of class AbstractGameUnit. It can be any object.</span>
+<span class="sd">               The calling code should ensure the correct object is passed</span>
+<span class="sd">               to this function.</span>
+<span class="sd">    :arg obj2: Another instance of class AbstractGameUnit</span>
+
+<span class="sd">    :return: obj1 or obj2</span>
+
+<span class="sd">    .. seealso:: :py:func:`weighted_random_selection_alternate` which is an</span>
+<span class="sd">                  alternative implementation that is used to demonstrate</span>
+<span class="sd">                  the importance of unit testing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">selection</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">([</span><span class="nb">id</span><span class="p">(</span><span class="n">obj1</span><span class="p">),</span> <span class="nb">id</span><span class="p">(</span><span class="n">obj2</span><span class="p">)],</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">selection</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">obj1</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">obj1</span>
     <span class="k">return</span> <span class="n">obj2</span></div>
 
 <div class="viewcode-block" id="print_bold"><a class="viewcode-back" href="../../wargame.html#wargame.gameutils.print_bold">[docs]</a><span class="k">def</span> <span class="nf">print_bold</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Print a desired messsage in bold&quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[1m&quot;</span> <span class="o">+</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span></div>
+    <span class="sd">&quot;&quot;&quot;Convinience function to print a message in bold style</span>
 
+<span class="sd">    Optionally you can also specify how the bold text should end. By default it</span>
+<span class="sd">    ends with a new line character.</span>
+
+<span class="sd">    :arg msg: Message to be converted to bold style</span>
+<span class="sd">    :arg end: Tell how the printed string should end (newline, space etc)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[1m&quot;</span> <span class="o">+</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
