@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# upload package -- creates and uploads a python package
+# arg1: pypirc repository
+# arg2: regex text to match the dist/<filepattern> dist
+# arg3: is not null, skip-existing versions
+
+python setup.py sdist
+
+if [ "$#" -ge 3 ]; then 
+    twine upload -r ${1} --skip-existing dist/${2}
+else
+    twine upload -r ${1} dist/${2}
+fi
