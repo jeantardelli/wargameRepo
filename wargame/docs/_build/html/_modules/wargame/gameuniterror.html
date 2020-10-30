@@ -154,32 +154,6 @@
 <span class="sd">This is my version of the code, it is pretty much similar to the original</span>
 <span class="sd">author&#39;s version.</span>
 
-<span class="sd">RUNNING THE PROGRAM:</span>
-<span class="sd">--------------------</span>
-<span class="sd">This is NOT run as a standalone program. See `wargame/attackoftheorcs.py`</span>
-
-<span class="sd"># ----------------------------------------------------------------------------</span>
-<span class="sd"># Alternate implementation where you subclass the custom exception,</span>
-<span class="sd"># GameUnitError. The following code would eliminate the need of maintaining</span>
-<span class="sd"># an error_dict object in GameUnitError.</span>
-<span class="sd"># ----------------------------------------------------------------------------</span>
-<span class="sd"># class GameUnitError(Exception):</span>
-<span class="sd">#     def __init__(self, message=&#39;&#39;):</span>
-<span class="sd">#         super().__init__(message)</span>
-<span class="sd">#         self.padding = &#39;~&#39;*50 + &#39;\n&#39;</span>
-<span class="sd">#         self.error_message = &quot; Unspecified Error!&quot;</span>
-<span class="sd">#</span>
-<span class="sd"># class HealthMeterException(GameUnitError):</span>
-<span class="sd">#     def __init__(self, message=&#39;&#39;):</span>
-<span class="sd">#         super().__init__(message)</span>
-<span class="sd">#         self.error_message = (self.padding +</span>
-<span class="sd">#                              &quot;ERROR: Health Meter Problem&quot; +</span>
-<span class="sd">#                              &#39;\n&#39; + self.padding )</span>
-<span class="sd">#</span>
-<span class="sd"># class AttackException(GameUnitError):</span>
-<span class="sd">#     # Code similar to that of HealthMeterException .</span>
-<span class="sd">#     pass</span>
-
 <span class="sd">.. seealso::`wargame/attackoftheorcs.py`</span>
 
 <span class="sd">:copyright: 2020, Jean Tardelli</span>
@@ -195,8 +169,7 @@
 <span class="sd">    :ivar error_dict: Python dictionary object that stores error number as</span>
 <span class="sd">                      the key and the detailed error message as its value.</span>
 
-<span class="sd">    .. seealso::</span>
-<span class="sd">        :py:meth: `abstractgameunit.AbstractGameUnit.heal` for an</span>
+<span class="sd">    .. seealso:: :py:meth: `abstractgameunit.AbstractGameUnit.heal` for an</span>
 <span class="sd">                 example usage.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="mi">000</span><span class="p">):</span>

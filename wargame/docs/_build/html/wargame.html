@@ -86,10 +86,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-wargame.abstractgameunit">wargame.abstractgameunit module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-wargame.attackoftheorcs">wargame.attackoftheorcs module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-wargame.gameuniterror">wargame.gameuniterror module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#running-the-program">RUNNING THE PROGRAM:</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-wargame.gameuniterror">wargame.gameuniterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-wargame.gameutils">wargame.gameutils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-wargame.hut">wargame.hut module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-wargame.knight">wargame.knight module</a></li>
@@ -401,32 +398,6 @@ by calling appropriate functionality:</p>
 code for the book, Learning Python Application Development Packt Publishing.</p>
 <p>This is my version of the code, it is pretty much similar to the original
 author’s version.</p>
-<div class="section" id="running-the-program">
-<h3>RUNNING THE PROGRAM:<a class="headerlink" href="#running-the-program" title="Permalink to this headline">¶</a></h3>
-<p>This is NOT run as a standalone program. See <cite>wargame/attackoftheorcs.py</cite></p>
-<p># —————————————————————————-
-# Alternate implementation where you subclass the custom exception,
-# GameUnitError. The following code would eliminate the need of maintaining
-# an error_dict object in GameUnitError.
-# —————————————————————————-
-# class GameUnitError(Exception):
-#     def __init__(self, message=’’):
-#         super().__init__(message)
-#         self.padding = ‘~’<a href="#id5"><span class="problematic" id="id6">*</span></a>50 + ‘
-‘
-#         self.error_message = ” Unspecified Error!”
-#
-# class HealthMeterException(GameUnitError):
-#     def __init__(self, message=’’):
-#         super().__init__(message)
-#         self.error_message = (self.padding +
-#                              “ERROR: Health Meter Problem” +
-#                              ‘
-‘ + self.padding )
-#
-# class AttackException(GameUnitError):
-#     # Code similar to that of HealthMeterException .
-#     pass</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -458,7 +429,6 @@ the key and the detailed error message as its value.</li>
 </table>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-wargame.gameutils">
 <span id="wargame-gameutils-module"></span><h2>wargame.gameutils module<a class="headerlink" href="#module-wargame.gameutils" title="Permalink to this headline">¶</a></h2>
