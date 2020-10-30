@@ -1,7 +1,10 @@
 from abstractgameunit import AbstractGameUnit
 
 class OrcRider(AbstractGameUnit):
-    """Class that represents the game character Orc Rider"""
+    """Class that represents the game character Orc Rider
+
+    .. seealso:: The class `Knight` and the superclass `AbstractGameUnit`
+    """
     def __init__(self, name=''):
         super().__init__(name=name)
         self.max_hp = 30

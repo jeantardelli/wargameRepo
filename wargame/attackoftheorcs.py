@@ -4,15 +4,38 @@ from knight import Knight
 from orcrider import OrcRider
 from gameutils import print_bold
 
-
 class AttackOfTheOrcs(object):
-    """Main class to play Attack of The Orcs game"""
+    """Main class with the high level logic to play Attack of The Orcs  game
+
+    :ivar huts: List object to hold instances of `Hut` class.
+    :ivar player: Represents the player playing this game. This is an instance
+                  of class `Knight` in current implementation.
+
+    .. seealso:: :py:meth:`self.play` where the main action happens.
+    """
     def __init__(self):
         self.huts = []
         self.player = None
 
     def get_occupants(self):
-        """Return a list of occupant types for all huts."""
+        """Return a list of occupant types for all huts.
+
+        This is mainly used for printing information on current status of the
+        hut (wheter unoccupied or acquired).
+
+        If the occupant is not `None` the occupant type will be 'enemy' or
+        'friend'. But if there is no occupant or is already 'ACQUIRED' the
+        occupant_type will display that information instead.
+        See `Hut.get_occupant_type()` for more details.
+
+        Return a list that collects this information from all the huts.
+        This is a list comprehension example. More on the list comprehension
+        in a chapter on Performance.
+
+        :return: A list containing occupant types (string)
+
+        .. seealso: :py:meth:`Hut.get_occupant_type`
+        """
         return [x.get_occupant_type() for x in self.huts]
 
     def show_game_mission(self):
@@ -23,13 +46,20 @@ class AttackOfTheOrcs(object):
         print("---------------------------------------------------------\n")
 
     def _process_user_choice(self):
-        """Process the user input for choice of hut to enter"""
+        """Process the user input for choice of hut to enter
+
+        Returns the hut number to enter based on the user input. This method
+        makes sure that the hut number user has entered is valid. If not, it
+        prompts the user to re-enter this information.
+
+        :return: hut index to enter.
+        """
         verifying_choice = True
         idx = 0
         print("Current occupants: {0:s}".format(', '.join(self.get_occupants())))
         while verifying_choice:
             user_choice = input("Choose a hut number to enter (1-5): ")
-            
+
             # Handling Exceptions block
             try:
                 idx = int(user_choice)
@@ -40,7 +70,7 @@ class AttackOfTheOrcs(object):
                 continue
             except AssertionError as e:
                 print("Number should be in the range 1-5. Try again")
-                
+ 
             try:
                 if self.huts[idx-1].is_acquired:
                     print("You have already acquired this hut. Try another one.\n"
@@ -52,7 +82,12 @@ class AttackOfTheOrcs(object):
         return idx
 
     def _occupy_huts(self):
-        """Randomly occupy the huts with one of the options (friend, enemy or 'None')"""
+        """Randomly occupy the huts with one of the options (friend, enemy or 'None')
+
+        .. todo::
+            Here we assume there are exactly 5 huts. As an exercise, make it a user
+            input. Note that after such change, the unit test is expected to fail!
+        """
         choice_lst = ['friend', 'enemy', None]
         for i in range(5):
             computer_choice = random.choice(choice_lst)
@@ -71,6 +106,16 @@ class AttackOfTheOrcs(object):
 
         Controls the high level logic to play the game. this is called from
         the main program to begin the game execution.
+
+        In summary, this method has the high level logic that does the following
+        by calling appropriate functionality:
+
+        * Set up instance variables for the game
+        * Accept the user input for hut number to enter
+        * Attempt to acquire the hut (:py:meth:`Knight.acquire_hut`)
+        * Determine if the player wins or loses.
+
+        .. seealso:: :py:meth:`Knight.acquire_hut`
         """
         self.player = Knight()
         self._occupy_huts()
