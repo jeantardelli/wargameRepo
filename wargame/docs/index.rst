@@ -1,5 +1,5 @@
 .. wargame documentation master file, created by
-   sphinx-quickstart on Fri Oct 30 12:22:10 2020.
+   sphinx-quickstart on Fri Oct 30 17:24:07 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -10,7 +10,7 @@ Welcome to wargame's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   modules.rst
 
 Indices and tables
 ==================
