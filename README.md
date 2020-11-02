@@ -1,6 +1,6 @@
 # Attack of The Orcs
 
-[![Release](https://img.shields.io/badge/release-v2.0.3-blue)](https://shields.io/)
+[![Release](https://img.shields.io/badge/release-v2.0.3-blue)](https://pypi.org/project/gamepkg-jean/)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com/)
 
@@ -9,6 +9,14 @@ _This is a project I am doing to learn Python Application Development_
 ## Introduction
 
 This is a command line fantasy war game!
+
+## Instalation
+
+Use the package manager [pip](https://pypi.org/) to install the game.
+
+```bash
+pip install gamepkg-jean
+```
 
 ## Documentation
 
@@ -21,6 +29,7 @@ from wargame.attackoftheorcs import AttackOfTheOrcs
 
 game = AttackOfTheOrcs()
 game.play()
+
 ```
 
 ## License
