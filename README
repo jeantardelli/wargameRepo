@@ -21,6 +21,12 @@ Here is an example to import the modules from this package.
     game = AttackOfTheOrcs()
     game.play()
 
+Or you can just run the attackoftheorcs.py script as
+
+.. code:: bash
+
+    $ python attackoftheorcs.py
+
 
 LICENSE
 -------

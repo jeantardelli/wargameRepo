@@ -1,8 +1,9 @@
 # Attack of The Orcs
 
 [![Release](https://img.shields.io/badge/release-v2.0.3-blue)](https://pypi.org/project/gamepkg-jean/)
+[![Issues](https://img.shields.io/github/issues/jeantardelli/wargameRepo)](https://github.com/jeantardelli/wargameRepo/issues)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
-[![MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com/)
+[![MIT](https://img.shields.io/github/license/jeantardelli/wargameRepo)](https://choosealicense.com/)
 
 _This is a project I am doing to learn Python Application Development_
 

@@ -33,6 +33,34 @@ def weighted_random_selection(obj1, obj2):
         return obj1
     return obj2
 
+def weighted_random_selection_alternate(obj1, obj2):
+    """Randomly return one of the following, obj1 or obj2 or None.
+
+    This function is an ALTERNATIVE implementation of `weighted_random_selection`
+    It is created to just show the importance of unit testing.
+
+    :arg obj1: An instance of class AbstractGameUnit. It can be any object. The
+               calling code should ensure the correct object is passed to this
+               function
+    :arg obj2: Another instance of class AbstractGameUnit.
+               See the comment for obj1
+
+    :return: obj1 or obj2 or None
+
+    .. seealso::
+
+        * :py:func:`weighed_random_selection`
+        * The unit test in the `wargame.test directory` --
+          :py:meth:`test_wargame.TestWarGame.test_injured_unit_selection`
+    """
+    selection = random.choices([id(obj1), id(obj2), None], weights=[.3, .1, .6])
+
+    if selection[0] == id(obj1):
+        return obj1
+    if selection[0] == id(obj2):
+        return obj2
+    return None
+
 def print_bold(msg, end='\n'):
     """Convinience function to print a message in bold style
 
