@@ -71,7 +71,7 @@ class Knight(AbstractGameUnit):
 
                 if self.enemy.health_meter <= 0:
                     print("")
-                    hut.acquired(self)
+                    hut.acquire(self)
                     break
                 if self.health_meter <=0:
                     print("")
@@ -81,7 +81,7 @@ class Knight(AbstractGameUnit):
                 print_bold("Hut is unoccupied")
             else:
                 print_bold("Friend sighted!")
-            hut.acquired(self)
+            hut.acquire(self)
             self.heal()
 
     def run_away(self):

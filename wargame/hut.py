@@ -36,7 +36,7 @@ class Hut():
         self.occupant = occupant
         self.is_acquired = False
 
-    def acquired(self, new_occupant):
+    def acquire(self, new_occupant):
         """Update the occupant of this hut and set is_acquired flag.
 
         Update the occupant instance variable with the parameter new_occupant

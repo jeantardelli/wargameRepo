@@ -11,12 +11,19 @@ author version.
 :copyright: 2020, Jean Tardelli
 :license: The MIT License (MIT). See LICENSE file for further details.
 """
-
+import sys
 import random
 from hut import Hut
 from knight import Knight
 from orcrider import OrcRider
 from gameutils import print_bold
+
+if sys.version_info < (3, 0):
+    print("This code requires Python 3.x and is tested with version 3.7.x")
+    print("Looks like you are trying to run this using Python version: {0}.{1}"
+            .format(sys.version_info[0], sys_version_info[1]))
+    print("Exiting...")
+    sys.exit(1)
 
 class AttackOfTheOrcs():
     """Main class with the high level logic to play Attack of The Orcs  game
@@ -114,6 +121,20 @@ class AttackOfTheOrcs():
             else:
                 self.huts.append(Hut(i+1, computer_choice))
 
+    def setup_game_scenario(self):
+        """Create player and huts and then randomly pre-occupy huts.
+
+        The huts might be ledt empty as weel. This method also prints the game
+        mission which could be refactored out of this as an exercise.
+
+        .. seealso:: :py:meth: `self.play`,
+                     :py:meth: `self._occupy_huts`
+        """
+        self.player = Knight()
+        self._occupy_huts()
+        self.show_game_mission()
+        self.player.show_health(bold=True)
+
     def play(self):
         """
         Workhorse method to play the game.
@@ -129,15 +150,15 @@ class AttackOfTheOrcs():
         * Attempt to acquire the hut (:py:meth:`Knight.acquire_hut`)
         * Determine if the player wins or loses.
 
-        .. seealso:: :py:meth:`Knight.acquire_hut`
+        .. seealso:: :py:meth: `setup_game_scenario`,
+                     :py:meth:`Knight.acquire_hut`
         """
-        self.player = Knight()
-        self._occupy_huts()
+        # Create a Knight instance, create huts and preoccupy them with a game
+        # character instance (or leave empty)
+        self.setup_game_scenario()
+
+        # Initial setup is done, now the main play logic
         acquired_hut_counter = 0
-
-        self.show_game_mission()
-        self.player.show_health(bold=True)
-
         while acquired_hut_counter < 5:
             idx = self._process_user_choice()
             self.player.acquire_hut(self.huts[idx-1])
