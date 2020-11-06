@@ -16,7 +16,7 @@ This is a command line fantasy war game!
 Use the package manager [pip](https://pypi.org/) to install the game.
 
 ```bash
-pip install gamepkg-jean
+$ pip install gamepkg-jean
 ```
 
 ## Documentation
@@ -25,11 +25,19 @@ The documentation can be found [here](https://wargamerepo.readthedocs.io/en/late
 
 ## Example Usage
 
+You can run the main module in your Python interpreter:
+
 ```python
 from wargame.attackoftheorcs import AttackOfTheOrcs
 
 game = AttackOfTheOrcs()
 game.play()
+```
+
+Or you can call it directly as a script:
+
+```sh
+$ python3 attackoftheorcs.py
 
 ```
 
