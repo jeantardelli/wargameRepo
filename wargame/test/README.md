@@ -1,6 +1,6 @@
 # Test Directory
 
-This directory contains the unit test scripts. The following table is the total coverage of the tests:
+This directory contains the unit test scripts. The following table contains the total coverage of the tests:
 
 | name | Stmts | Miss | Cover | 
 | ---- | ----- | ---- | ----- | 
