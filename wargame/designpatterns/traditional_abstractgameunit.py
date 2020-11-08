@@ -1,12 +1,7 @@
-"""strategypattern_traditional_abstractgameunit
+"""traditional_abstractgameunit
 
-Example to show one way of implementing strategy design pattern in Python.
-
-The example shown here resembles a 'traditional' implementation of trategy
-pattern in Python (traditional = the one you may implement in languages like
-C++). For a more Pythonic approach, see the file strategy_pythonic.py.
-
-This module is compatible with Python 3.6.x.
+This is the super class contaning the properties of the different GameUnits
+that are used in the desing patterns examples.
 
 :copyright: 2020, Jean Tardelli
 
@@ -23,7 +18,7 @@ class AbstractGameUnit(ABC):
                                    its subclasses. Default to None.
     :ivar jump_strategy: Choose the algorithm for jumping.
     """
-    def __init__(self, name, jump_object=None):
+    def __init__(self, name='stranger', jump_object=None):
         """Initializes the AbstractGameUnit object."""
         self.jump_strategy = None
         self.name = name

@@ -8,14 +8,6 @@ C++). For a more Pythonic approach, see the file strategy_pythonic.py.
 
 This module is compatible with Python 3.6.x.
 
-RUNNING THE PROGRAM:
-Assuming you have python in your environment variable PATH, type the following
-in the command prompt to run the program:
-
-        $ python name_of_the_file.py
-
-(Replace name_of_the_file.py with the name of this file)
-
 :copyright: 2020, Jean Tardelli
 
 :license: The MIT license (MIT). See LICENSE file for further details.

@@ -9,7 +9,7 @@ This module is compatible with Python 3.6.x.
 
 :copyright: 2020, Jean Tardelli
 
-:copyright: The MIT License (MIT). See LICENSE file for further details.
+:license: The MIT License (MIT). See LICENSE file for further details.
 """
 def can_not_jump():
     """A demo function representing a jump algorithm.
