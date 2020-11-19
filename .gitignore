@@ -1,0 +1,2 @@
+# ignore generated files due to compile code
+*.pyc
