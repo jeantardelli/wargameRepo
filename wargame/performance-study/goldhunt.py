@@ -118,9 +118,16 @@ class GoldHunt:
         # Compute the square of the search radius needed later
         search_radius_square = self.search_radius ** 2
 
+        # Assign collected_coins.append to a local function
+        append_coins_function = collected_coins.append
+
+        # Create local variables to represent the instance vars
+        local_xref = self.x_ref
+        local_yref = self.y_ref
+
         for x, y in zip(x_list, y_list):
-            delta_x = self.x_ref - x
-            delta_y = self.y_ref - y
+            delta_x = local_xref - x
+            delta_y = local_yref - y
 
             # No need to compute the actual distance which is sqrt
             # of the following number.
@@ -128,7 +135,11 @@ class GoldHunt:
 
             # Just compare the squares of the distances
             if dist_square <= search_radius_square:
-                collected_coins.append((x, y))
+
+                # See the definition of append_coins_function before the for
+                # loop. It is used in place of collected_coins.append for
+                # speedup.
+                append_coins_function((x, y))
 
         return collected_coins
 
