@@ -1,4 +1,4 @@
-"""goldhunt_inefficient
+"""goldhunt
 
 This module contais the code for the 'Gold Hunt' scenario set up to understand
 different ways to approach a performance problem and how to optimze it.
@@ -35,7 +35,7 @@ def plot_points(ref_radius, x_coords, y_coords):
 
 # Enable the @profile decorator only when you are running line_profiles or
 # memory_profiler. Otherwise it will throw an error.
-@profile
+#@profile
 def generate_random_points(ref_radius, total_points, show_plot):
     """Return x, y coordinate lists representing random points inside a circle.
 
@@ -104,7 +104,7 @@ class GoldHunt:
         self.x_ref = - (self.field_radius - self.search_radius)
         self.move_distance = 2*self.search_radius
 
-    @profile
+    #@profile
     def find_coins(self, x_list, y_list):
         """Return list of coins that lie within a given distance.
 
@@ -115,12 +115,19 @@ class GoldHunt:
         """
         collected_coins = []
 
+        # Compute the square of the search radius needed later
+        search_radius_square = self.search_radius ** 2
+
         for x, y in zip(x_list, y_list):
             delta_x = self.x_ref - x
             delta_y = self.y_ref - y
-            dist = math.sqrt(delta_x ** 2 + delta_y **2)
 
-            if dist <= self.search_radius:
+            # No need to compute the actual distance which is sqrt
+            # of the following number.
+            dist_square = delta_x ** 2 + delta_y **2
+
+            # Just compare the squares of the distances
+            if dist_square <= search_radius_square:
                 collected_coins.append((x, y))
 
         return collected_coins

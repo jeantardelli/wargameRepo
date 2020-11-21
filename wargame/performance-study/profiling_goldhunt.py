@@ -6,7 +6,7 @@ and then view the profiling statistics using pstats module.
 import sys
 import cProfile
 import pstats
-from goldhunt_inefficient import GoldHunt
+from goldhunt import GoldHunt
 
 if sys.version_info < (3, 0):
     print("This code requires Python 3.x.")
@@ -28,7 +28,7 @@ def view_stats(fil, text_restriction):
 
 def play_game():
     """Control function to execute the GoldHunt game"""
-    game = GoldHunt(show_plot=False)
+    game = GoldHunt(field_coins=10000, search_radius=1, show_plot=False)
     game.play()
 
 if __name__ == '__main__':
