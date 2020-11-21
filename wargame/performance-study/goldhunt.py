@@ -48,17 +48,26 @@ def generate_random_points(ref_radius, total_points, show_plot):
 
     :return: x and y coordinates as lists
 
-    .. note:: This function shows an inefficient way of generating random
-        points.
+    .. note:: This function runds slightly faster compared to the one in earlier
+        optimization passes (last commits). However the optimization for this
+        one is not over yet. Numpy arrays can be used to speed up still more.
     """
     x = []
     y = []
 
+    # Combination of "avoiding the dots" (function reevaluations) and
+    # using local variables.
+    l_uniform = random.uniform
+    l_sqrt = math.sqrt
+    l_pi = math.pi
+    l_cos = math.cos
+    l_sin = math.sin
+
     for _ in range(total_points):
-        theta = random.uniform(0.0, 2*math.pi)
-        r = ref_radius*math.sqrt(random.uniform(0.0, 1.0))
-        x.append(r*math.cos(theta))
-        y.append(r*math.sin(theta))
+        theta = l_uniform(0.0, 2*l_pi)
+        r = ref_radius*l_sqrt(l_uniform(0.0, 1.0))
+        x.append(r*l_cos(theta))
+        y.append(r*l_sin(theta))
 
     if show_plot:
         plot_points(ref_radius, x, y)
