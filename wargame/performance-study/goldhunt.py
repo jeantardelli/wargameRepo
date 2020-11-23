@@ -7,6 +7,8 @@ This module is written with Python 3.8.x
 """
 import sys
 import time
+import itertools
+import multiprocessing
 import numpy as np
 
 if sys.version_info < (3, 0):
@@ -109,11 +111,15 @@ class GoldHunt:
         self.move_distance = 2*self.search_radius
 
     #@profile
-    def find_coins(self, x_list, y_list):
+    def find_coins(self, x_list, y_list, process_x_ref, circle_num):
         """Return list of coins that lie within a given distance.
 
         :param x_list: list of x coordinates of all the coins (points)
         :param y_list: list of y coordinates of all the coins (points)
+        :param process_x_ref: the x-coordinate of the current search circle.
+                It is the circle inside which the find_coins is actively 
+                searching for coins (parallel processes)
+        :param circle_num: circle number or id (used for printing purposes)
 
         :return: a list containing (x,y) coordinates of all the eligible coins
         """
@@ -130,7 +136,7 @@ class GoldHunt:
         points = np.dstack((x_list, y_list))
 
         # Array representing the center of search circle
-        center = np.array([self.x_ref, self.y_ref])
+        center = np.array([process_x_ref, self.y_ref])
         diff = points - center
 
         # Use einsum to get array representing distance squares
@@ -149,29 +155,45 @@ class GoldHunt:
                 # speedup.
                 append_coins_function((x_list[i], y_list[i]))
 
+        print("Circle# {num}, center:({x}, {y})), coins: {gold}".format(
+                num=circle_num, x=process_x_ref, 
+                y=self.y_ref, gold=len(collected_coins)))
         return collected_coins
 
     def play(self):
         """Functions that enables to play the game"""
-        total_collected_coins = []
+        x_ref = self.x_ref
+        x_centers = []
+        circle_numbers = []
         x_list, y_list = generate_random_points(self.field_radius,
                                                 self.field_coins,
                                                 self.show_plot)
+
+        # Preparea list to store all the circle centers (x_ref).
         count = 0
-        while self.x_ref <= 9.0:
+        while x_ref <= 9.0:
             count += 1
+            x_centers.append(x_ref)
+            x_ref += self.move_distance
+            circle_numbers.append(count)
 
-            # Find all the coins that lie within the circle of radius 1 unit
-            coins = self.find_coins(x_list, y_list)
-            print("Circle# {num}, center: ({x}, {y}), coins: {gold}".format(
-                num=count, x=self.x_ref, y=self.y_ref, gold=len(coins)))
+        # Parallelize the find_coins operation. Choose the number of 
+        # processes depending on you machine specs!
+        pool = multiprocessing.Pool(processes=3)
+        results = [pool.apply_async(self.find_coins,
+                                    args=(x_list, y_list, x_ref, num))
+                    for x_ref, num in zip(x_centers, circle_numbers)]
+        pool.close()
+        pool.join()
 
-            # Update the main list that keeps record of all collected coins.
-            total_collected_coins.extend(coins)
+        # The elements of results list are instances of Pool.ApplyResult.
+        # Use the object's get() method to get the final values.
+        # Optionally you can also use generator expression here:
+        #output = (p.get() for p in results)
+        output = [p.get() for p in results]
 
-            # Move to the next position along positive X axis
-            self.x_ref += self.move_distance
-
+        # Merge the results
+        total_collected_coins = list(itertools.chain(*output))
         print("Total collected coins: {0}".format(len(total_collected_coins)))
 
 if __name__ == '__main__':
