@@ -7,8 +7,7 @@ This module is written with Python 3.8.x
 """
 import sys
 import time
-import random
-import math
+import numpy as np
 
 if sys.version_info < (3, 0):
     print("This code requires Python 3.x.")
@@ -42,32 +41,28 @@ def generate_random_points(ref_radius, total_points, show_plot):
     Generates random points inside a circle with center at (0,0). For any point
     it randomly picks a radius between 0 and ref_radius.
 
+    The run time performance of this function will be significantly faster
+    compared to the previous optimization pass.
+
     :param ref_radius: the random point lies between 0 and this radius.
     :param total_points: total number of random points to be created
     :param show_plot: boolean value to show the distribution of points.
 
-    :return: x and y coordinates as lists
-
-    .. note:: This function runds slightly faster compared to the one in earlier
-        optimization passes (last commits). However the optimization for this
-        one is not over yet. Numpy arrays can be used to speed up still more.
+    :return: x and y coordinates as numpy arrays
     """
-    x = []
-    y = []
-
     # Combination of "avoiding the dots" (function reevaluations) and
-    # using local variables.
-    l_uniform = random.uniform
-    l_sqrt = math.sqrt
-    l_pi = math.pi
-    l_cos = math.cos
-    l_sin = math.sin
+    # using local variables. It also uses the numpy library
+    l_uniform = np.random.uniform
+    l_sqrt = np.sqrt
+    l_pi = np.pi
+    l_cos = np.cos
+    l_sin = np.sin
 
-    for _ in range(total_points):
-        theta = l_uniform(0.0, 2*l_pi)
-        r = ref_radius*l_sqrt(l_uniform(0.0, 1.0))
-        x.append(r*l_cos(theta))
-        y.append(r*l_sin(theta))
+    # Note that the variables theta and radius are now numpy arrays
+    theta = l_uniform(0.0, 2.0 * l_pi, total_points)
+    radius = ref_radius * l_sqrt(l_uniform(0.0, 1.0, total_points))
+    x = radius * l_cos(theta)
+    y = radius * l_sin(theta)
 
     if show_plot:
         plot_points(ref_radius, x, y)
@@ -130,25 +125,29 @@ class GoldHunt:
         # Assign collected_coins.append to a local function
         append_coins_function = collected_coins.append
 
-        # Create local variables to represent the instance vars
-        local_xref = self.x_ref
-        local_yref = self.y_ref
+        # Create a single 'points' array from (x_list, y_list)
+        # representing x, y coordinates.
+        points = np.dstack((x_list, y_list))
 
-        for x, y in zip(x_list, y_list):
-            delta_x = local_xref - x
-            delta_y = local_yref - y
+        # Array representing the center of search circle
+        center = np.array([self.x_ref, self.y_ref])
+        diff = points - center
 
-            # No need to compute the actual distance which is sqrt
-            # of the following number.
-            dist_square = delta_x ** 2 + delta_y **2
+        # Use einsum to get array representing distance squares
+        distance_squares = np.einsum('...i,...i', diff, diff)
 
-            # Just compare the squares of the distances
-            if dist_square <= search_radius_square:
+        # Convert it to Python list (list of 'distance squares')
+        dist_sq_list = distance_squares[0].tolist()
+
+        for i, d in enumerate(dist_sq_list):
+
+            # i is the index, d is the value of the list item
+            if d <= search_radius_square:
 
                 # See the definition of append_coins_function before the for
                 # loop. It is used in place of collected_coins.append for
                 # speedup.
-                append_coins_function((x, y))
+                append_coins_function((x_list[i], y_list[i]))
 
         return collected_coins
 
