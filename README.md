@@ -5,7 +5,7 @@
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![MIT](https://img.shields.io/github/license/jeantardelli/wargameRepo)](https://choosealicense.com/)
 
-_This is a project I am doing to learn Python Application Development_
+_This is a project I am doing to learn Python Application Development. This is my code for the [Learning Python Application Development](https://github.com/PacktPublishing/Learning-Python-Application-Development) book._
 
 ## Introduction
 
